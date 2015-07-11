@@ -15,11 +15,14 @@ alldata <- read.table("./data/household_power_consumption.txt", header = TRUE, s
 ## subsetting two days
 data <- alldata[alldata$Date == "1/2/2007" | alldata$Date == "2/2/2007", ]
 
-## making plot1
-png(filename = "plot1.png",
-    width = 480, height = 480)
-hist(data$Global_active_power, main = "Global active power", 
-     xlab = "Global active power (kilowatts)", col = "red")
+# creating new variable
+data$DateTime <- paste(data$Date, data$Time, sep = " ")
+data$DateTime <- strptime(data$DateTime, "%e/%m/%Y %H:%M:%S")
+
+## making plot2
+png(filename = "plot2.png", width = 480, height = 480)
+with(data, plot(DateTime, Global_active_power, type = "l", 
+                ylab = "Global active power (kilowatts)"))
 dev.off()
 
-# plot1.png is in your working directory
+## plot2 is in your working directory
