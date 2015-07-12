@@ -19,14 +19,26 @@ data <- alldata[alldata$Date == "1/2/2007" | alldata$Date == "2/2/2007", ]
 data$DateTime <- paste(data$Date, data$Time, sep = " ")
 data$DateTime <- strptime(data$DateTime, "%e/%m/%Y %H:%M:%S")
 
-## making plot3
-png(filename = "plot3.png", width = 480, height = 480)
+## making plot4
+png(filename = "plot4.png", width = 480, height = 480)
+par(mfcol = c(2, 2))
+par(mar = c(2, 2, 2, 2))
+
+with(data, plot(DateTime, Global_active_power, type = "l", 
+                ylab = "Global active power (kilowatts)"))
+
 with(data, plot(DateTime, Sub_metering_1, ylab = "Energy Submrtering", type= "n"))        
 with(data, points(DateTime, Sub_metering_1, type = "l"))
 with(data, points(DateTime, Sub_metering_2, type = "l", col = "red"))
 with(data, points(DateTime, Sub_metering_3, type = "l", col = "blue"))
 legend("topright", pch = "-", col = c("black", "red", "blue"), 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+with(data, plot(DateTime, Voltage, type = "l", 
+                ylab = "Voltage"))
+
+with(data, plot(DateTime, Global_reactive_power, type = "l", 
+                ylab = "Global reactive power (kilowatts)"))
 dev.off()
 
-## plot3 is in your working directory
+## plot4 is in your working directory
