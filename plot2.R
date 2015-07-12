@@ -1,4 +1,8 @@
-## this code gets data frum url in data folder, unzips, reads and makes plot1.png
+## this code gets data from web into data folder, unzips, reads and makes plot.png
+
+## were used Windows 8.1 
+## R version 3.1.3 (2015-03-09) -- "Smooth Sidewalk", Platform: x86_64-w64-mingw32/x64 (64-bit)
+## base package
 
 ## getting data
 if(!file.exists("data")) {dir.create("data")}

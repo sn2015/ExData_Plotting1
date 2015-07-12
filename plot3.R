@@ -1,4 +1,8 @@
-## this code gets data frum url in data folder, unzips, reads and makes plot1.png
+## this code gets data from web into data folder, unzips, reads and makes plot.png
+
+## were used Windows 8.1 
+## R version 3.1.3 (2015-03-09) -- "Smooth Sidewalk", Platform: x86_64-w64-mingw32/x64 (64-bit)
+## base package
 
 ## getting data
 if(!file.exists("data")) {dir.create("data")}
@@ -21,11 +25,11 @@ data$DateTime <- strptime(data$DateTime, "%e/%m/%Y %H:%M:%S")
 
 ## making plot3
 png(filename = "plot3.png", width = 480, height = 480)
-with(data, plot(DateTime, Sub_metering_1, ylab = "Energy Submrtering", type= "n"))        
+with(data, plot(DateTime, Sub_metering_1, xlab = "", ylab = "Energy Submrtering", type= "n"))        
 with(data, points(DateTime, Sub_metering_1, type = "l"))
 with(data, points(DateTime, Sub_metering_2, type = "l", col = "red"))
 with(data, points(DateTime, Sub_metering_3, type = "l", col = "blue"))
-legend("topright", pch = "-", col = c("black", "red", "blue"), 
+legend("topright", lty = "solid" , col = c("black", "red", "blue"), 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 dev.off()
 
