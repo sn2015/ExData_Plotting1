@@ -21,7 +21,7 @@ data$DateTime <- strptime(data$DateTime, "%e/%m/%Y %H:%M:%S")
 
 ## making plot2
 png(filename = "plot2.png", width = 480, height = 480)
-with(data, plot(DateTime, Global_active_power, type = "l", 
+with(data, plot(DateTime, Global_active_power, type = "l", xlab = "", 
                 ylab = "Global active power (kilowatts)"))
 dev.off()
 
