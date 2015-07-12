@@ -24,6 +24,7 @@ data$DateTime <- paste(data$Date, data$Time, sep = " ")
 data$DateTime <- strptime(data$DateTime, "%e/%m/%Y %H:%M:%S")
 
 ## making plot3
+Sys.setlocale("LC_TIME", "English") # makes weekdays appear in English 
 png(filename = "plot3.png", width = 480, height = 480)
 with(data, plot(DateTime, Sub_metering_1, xlab = "", ylab = "Energy Submrtering", type= "n"))        
 with(data, points(DateTime, Sub_metering_1, type = "l"))
@@ -32,5 +33,6 @@ with(data, points(DateTime, Sub_metering_3, type = "l", col = "blue"))
 legend("topright", lty = "solid" , col = c("black", "red", "blue"), 
        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 dev.off()
+Sys.setlocale(category = "LC_TIME", locale = "") # restore local settings
 
 ## plot3 is in your working directory

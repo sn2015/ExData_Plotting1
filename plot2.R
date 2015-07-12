@@ -24,9 +24,11 @@ data$DateTime <- paste(data$Date, data$Time, sep = " ")
 data$DateTime <- strptime(data$DateTime, "%e/%m/%Y %H:%M:%S")
 
 ## making plot2
+Sys.setlocale("LC_TIME", "English") # makes weekdays appear in English 
 png(filename = "plot2.png", width = 480, height = 480)
 with(data, plot(DateTime, Global_active_power, type = "l", xlab = "", 
                 ylab = "Global active power (kilowatts)"))
 dev.off()
+Sys.setlocale(category = "LC_TIME", locale = "") # restore local settings
 
 ## plot2 is in your working directory

@@ -24,6 +24,7 @@ data$DateTime <- paste(data$Date, data$Time, sep = " ")
 data$DateTime <- strptime(data$DateTime, "%e/%m/%Y %H:%M:%S")
 
 ## making plot4
+Sys.setlocale("LC_TIME", "English") # makes weekdays appear in English 
 png(filename = "plot4.png", width = 480, height = 480)
 par(mfcol = c(2, 2))
 par(mar = c(2, 2, 2, 2))
@@ -44,5 +45,6 @@ with(data, plot(DateTime, Voltage, type = "l",
 with(data, plot(DateTime, Global_reactive_power, type = "l", 
                 ylab = "Global reactive power (kilowatts)"))
 dev.off()
+Sys.setlocale(category = "LC_TIME", locale = "") # restore local settings
 
 ## plot4 is in your working directory
